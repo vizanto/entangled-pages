@@ -1,0 +1,302 @@
+body {
+    background: white;
+    color: black;
+    font-size: 14pt;
+    font-family: "Neuton", "Roboto Slab", "Ibarra Real Nova", serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+h1 {
+    margin: 10pt 10pt;
+}
+
+p {
+    margin: 5pt 5pt;
+}
+
+#title-block-header {
+    background: #333;
+    color: #00aeef;
+    text-shadow: 0 0 1px black;
+    padding: 10pt;
+    margin: 0;
+    box-shadow: 0pt 0pt 4px 0pt #888;
+}
+#title-block-header h1 {
+    color: white;
+    margin-bottom: 5pt;
+}
+#title-block-header .subtitle {
+    margin-top: 5pt;
+    margin-left: 30pt;
+    font-style: italic;
+}
+
+.phonetic {
+    font-family: serif;
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+blockquote {
+    background: #ddd;
+    padding: 8pt 20pt 8pt 20pt;
+    max-width: 30em;
+    box-shadow: 0pt 0pt 4px 0pt #888;
+}
+
+h4:before {
+    content: "• •";
+    margin-right: 20pt;
+}
+
+h4 {
+    background: #009dde;
+    color: white;
+    text-shadow: 0 0 1px black;
+    font-family: "Overpass Light";
+    margin: 0 10pt;
+    padding: 6pt 0 4pt 10pt;
+    border-radius: 8pt 8pt 0pt 0pt;
+}
+
+#logobar img {
+    width: 2em;
+    vertical-align: middle;
+}
+
+p {
+    margin: 5pt 25pt;
+}
+
+/* Markdown examples {{{1 */
+.example {
+  padding: 0px;
+  overflow: hidden;
+  margin: 0 10pt 20pt 10pt;
+  background-color: #f1f1f1;
+} 
+
+.example figcaption {
+    display: none;
+}
+
+.example figure {
+    flex: 0 0 40%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.example .given-input {
+    padding: 0pt;
+    margin: 0pt;
+    background: #303030;
+}
+.example p {
+    margin: 10pt 10pt;
+    text-align: justify;
+}
+
+.example .given-input div.sourceCode {
+    margin: 0pt;
+    width: 95%;
+    padding: 10pt 5pt;
+    border: none;
+    border-radius: 0pt;
+    font-size: 12pt;
+    overflow: hidden;
+} 
+
+.example .generated-output {
+    margin: 0pt;
+    padding: 0pt 10pt 10pt 10pt;
+}
+
+.example .generated-output p {
+    margin: 5pt 0pt;
+}
+
+.example .generated-output div.sourceCode {
+    width: 27em;
+    margin: 0;
+    margin-left: 10pt;
+}
+/* collapsible example }}}1 */
+/* Code blocks {{{1 */
+code
+{
+    font-family: "Anonymous Pro", Courier, monospace;
+    font-size: 12pt;
+}
+
+div.sourceCode
+{
+    font-size: 10pt;
+    border: solid thin #aaa;
+    border-radius: 5pt;
+    padding: 10pt;
+    
+    overflow: hidden;
+    width: 30em;
+    /* width: 40em; */
+}
+
+pre.sourceCode {
+    margin: 0;
+}
+
+.sourceCode pre, .sourceCode code
+{
+    padding: unset;
+    background: none;
+    border: none;
+    width: unset;
+    left: unset;
+}
+
+.annotatedCode p {
+    margin-bottom: 2pt;
+}
+
+.annotatedCode .sourceCode {
+    margin-top: 0pt;
+}
+/* }}}1 */
+/* Slide show {{{1 */
+figure
+{
+    border: solid 1px #aaa;
+    border-radius: 5pt;
+    padding: 10pt;
+    /* background: white; */
+    box-shadow: 0pt 0pt 4px 0pt #888;
+    text-align: center;
+}
+
+#slide-show figure {
+   border-radius: 0;
+   padding: 0;
+   background: #282828;
+   color: white;
+   margin: 0;
+}
+
+figcaption
+{
+    text-align: justify;
+    font-style: italic;
+}
+
+figure img
+{
+    width: 100%;
+    margin: 0 auto 0 auto;
+}
+
+#slide-show {
+  max-width: 768px;
+  position: relative;
+  margin: 10pt auto;
+  background: #555555;  
+}
+
+/* Hide the images by default */
+.slide {
+  display: none;
+}
+
+.nav {
+  position: relative;
+  top: -50%;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  color: white;
+  cursor: pointer;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  margin: 10pt;
+  padding: 2pt 5pt 5pt 5pt;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 5pt;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+}
+.prev {
+  left: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background: #555555;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 10pt 2pt;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+#slide-show figcaption {
+   margin: 5pt 10pt 10pt 30pt;
+   font-size: 14pt;
+}
+
+/* Caption text */
+/*#slide-show figcaption {*/
+  /*color: #f2f2f2;*/
+  /*font-size: 15px;*/
+  /*padding: 8px 12px;*/
+  /*position: absolute;*/
+  /*bottom: 8px;*/
+  /*width: 100%;*/
+  /*text-align: center;*/
+/*}*/
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/* }}}1 */
+
+@media only screen and (min-width: 768px) {
+    .example {
+        display: flex;
+        margin: 0 10pt 20pt 10pt;
+    }
+    
+    .example .given-input {
+        flex: 1;
+    }
+    .example .generated-output {
+        flex: 1;
+    }
+}
+/* vim: set fdm=marker */
