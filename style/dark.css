@@ -5,6 +5,12 @@ body {
     font-family: "Neuton", "Roboto Slab", "Ibarra Real Nova", serif;
     font-weight: 400;
     margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 50em;
+    margin: 0 auto;
 }
 
 h1 {
@@ -18,19 +24,34 @@ p {
 #title-block-header {
     background: #333;
     color: #00aeef;
-    text-shadow: 0 0 1px black;
     padding: 10pt;
     margin: 0;
-    box-shadow: 0pt 0pt 4px 0pt #888;
+    text-shadow: 0 0 1px black;
 }
-#title-block-header h1 {
+#title-block-header .title {
+    padding: 0 30%;
     color: white;
-    margin-bottom: 5pt;
 }
 #title-block-header .subtitle {
     margin-top: 5pt;
     margin-left: 30pt;
     font-style: italic;
+}
+
+#topbar {
+    height: 25pt;
+    background: #ccc;
+    margin: 0;
+}
+
+#navigation {
+    position: absolute;
+    left: 10pt;
+}
+
+#logobar {
+    position: absolute;
+    right: 10pt;
 }
 
 .phonetic {

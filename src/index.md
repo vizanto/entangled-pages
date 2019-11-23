@@ -2,17 +2,17 @@
 title: Entangled
 subtitle: literate programming for the new millennium
 ---
+:::: {#topbar}
+[[Markdown](#section-markdown)
+ [Entangled](#section-entangled)
+ [Examples](#section-examples)
+]{#navigation}
+[[![Octocat](img/github.png) Find us on Github](https://github.com/entangled/entangled)&nbsp;
+ [![Download](img/download.svg) Download enTangled](https://github.com/entangled/entangled/releases)
+]{#logobar}
+::::
 
-::: {.navigation}
-[Markdown](#section-markdown)
-[Entangled](#section-entangled)
-[Examples](#section-examples)
-:::
-::: {#logobar}
-[![Octocat](img/github.png) Find us on Github](https://github.com/entangled/entangled)&nbsp;
-[![Download](img/download.svg) Download enTangled](https://github.com/entangled/entangled/releases)
-:::
-
+::::: {.content}
 > **Literate programming** [/ˈlɪtəɹət ˈpɹəʊɡɹæmɪŋ/]{.phonetic} (computing) Literate programming is a programming paradigm introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. [(Wikipedia)](https://en.wikipedia.org/wiki/Literate_programming)
 
 - Create **live documents** in Markdown
@@ -211,3 +211,4 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 [Adhesion code](https://jhidding.github.io/adhesion-code): presenting the cosmological adhesion model and its implementation in C++ and CGAL.
 ::::
 :::
+:::::
