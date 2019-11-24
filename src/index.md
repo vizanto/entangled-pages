@@ -3,24 +3,31 @@ title: Entangled
 subtitle: literate programming for the new millennium
 ---
 :::: {#topbar}
-[[Markdown](#section-markdown)
- [Entangled](#section-entangled)
- [Examples](#section-examples)
+[[Get started](#section-markdown)
+ [About Entangled](#section-entangled)
+ [Demo Gallery](#section-examples)
+ [External Links](#section-links)
 ]{#navigation}
 [[![Octocat](img/github.png) Find us on Github](https://github.com/entangled/entangled)&nbsp;
- [![Download](img/download.svg) Download enTangled](https://github.com/entangled/entangled/releases)
+ [![Download](img/download.svg) Download Entangled](https://github.com/entangled/entangled/releases)
 ]{#logobar}
 ::::
 
-::::: {.content}
-> **Literate programming** [/ˈlɪtəɹət ˈpɹəʊɡɹæmɪŋ/]{.phonetic} (computing) Literate programming is a programming paradigm introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. [(Wikipedia)](https://en.wikipedia.org/wiki/Literate_programming)
+::::: {#content}
+> **Literate programming** [/ˈlɪtəɹət ˈpɹəʊɡɹæmɪŋ/]{.phonetic} (computing) Literate programming is a programming paradigm introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. [Wikipedia](https://en.wikipedia.org/wiki/Literate_programming)
 
+::: {#synopsis}
 - Create **live documents** in Markdown
 - Program in **any language** you like
 - Use your **favourite editor**
+- Works well with **version control**
 - Powered by **Pandoc**
+:::
 
-# Markdown {#section-markdown}
+# Get started {#section-markdown}
+
+> "A critical aspect of a programming language is the means it provides
+for using names to refer to computational objects." [Abelson, Sussman & Sussman - SICP](https://mitpress.mit.edu/sites/default/files/sicp/index.html)
 
 #### Name your code
 ::: {.example}
@@ -46,6 +53,11 @@ def vector_length(x, y):
 ```
 ::::
 :::
+
+> "Let us change our traditional attitude to the construction of programs:
+> Instead of imagining that our main task is to instruct a computer what to do,
+> let us concentrate rather on explaining to human beings what we want a
+> computer to do." [Knuth - Literate Programming](http://www.literateprogramming.com/knuthweb.pdf)
 
 #### Compose your program
 ::: {.example}
@@ -103,6 +115,8 @@ count = len(words)
 ::::
 :::
 
+> “Talk is cheap. Show me the code.” [Linus Torvalds]()
+
 #### Test your documentation
 ::: {.example}
 :::: {.given-input}
@@ -118,9 +132,9 @@ count = len(words)
  And a small sentence:
 
  ``` {.python .doctest #test-word-count}
- word_count("Hebban olla uogala nestas hagunnan")
+ word_count("Hebban olla uogala")
  ---
- 5
+ 3
  ```
 ~~~
 ::::
@@ -136,9 +150,9 @@ word_count("")
 And a small sentence:
 
 ``` {.python .doctest #test-word-count}
-word_count("Hebban olla uogala nestas hagunnan")
+word_count("Hebban olla uogala")
 ---
-5
+3
 ```
 ::::
 :::
@@ -180,7 +194,7 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 <script src="jquery-3.3.1.slim.min.js"></script>
 <script src="anim.js"></script>
 
-# Examples {#section-examples}
+# Demo Gallery {#section-examples}
 
 #### Hello, World!
 ::: {#examples-div}
@@ -211,4 +225,42 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 [Adhesion code](https://jhidding.github.io/adhesion-code): presenting the cosmological adhesion model and its implementation in C++ and CGAL.
 ::::
 :::
+
+# External Links {#section-links}
+
+
+## Literate Books
+These are some awesome books written with a literate philosophy in mind.
+
+### [Pharr, Jakob & Humphreys - Physically Based Rendering](https://www.pbrt.org/)
+:::: {.book}
+::: {.book-img}
+![spheres](img/pbrt.png)
+:::
+::: {.book-expl}
+Explains physically realistic 3D rendering, while implementing the same techniques in C++. This book is so amazing, it actually won an Acadamy Award for technical achievement. The book follows the same *noweb* notation for code block references we do.
+:::
+::::
+
+### [Sussman & Wisdom - Structure and Interpretation of Classical Mechanics](https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-second-edition)
+:::: {.book}
+::: {.book-img}
+![sicm](img/sicm.jpg)
+:::
+::: {.book-expl}
+Does not use *noweb*, but subscribes to the many founding principles of literate programming. This is a text book on classical mechanics and specifically the Lagrangian and Hamiltonian discriptions of physics. The aim of translating concepts in classical mechanics to scheme code forced the authors to adopt a different notation for the underlying mathematics, because the traditional notation is too ambiguous.
+:::
+::::
+
+### [Hudak & Quick - The Haskell School of Music](http://euterpea.com/haskell-school-of-music/)
+:::: {.book}
+::: {.book-img}
+![hsom](img/hsom.jpg)
+:::
+::: {.book-expl}
+From signals to symphonies, this book fuses the authors' passion for music and the Haskell programming language.
+:::
+::::
 :::::
+
+<footer><address>2019 Johan Hidding, [![Netherlands eScience Center](img/escience_black.png)](https://esciencecenter.nl)</address></footer>
