@@ -118,13 +118,13 @@ count = len(words)
 
 > “Talk is cheap. Show me the code.” [Linus Torvalds]()
 
-#### Test your documentation (comming soon!)
+#### Test your documentation
 ::: {.example}
 :::: {.given-input}
 ~~~markdown
- Examples of counting words, the zero-case:
+ Counting words, the zero-case:
 
- ``` {.python .doctest #test-word-count}
+ ``` {.python .doctest #word-count}
  word_count("")
  ---
  0
@@ -132,7 +132,7 @@ count = len(words)
 
  And a small sentence:
 
- ``` {.python .doctest #test-word-count}
+ ``` {.python .doctest #word-count}
  word_count("Hebban olla uogala")
  ---
  3
@@ -140,9 +140,9 @@ count = len(words)
 ~~~
 ::::
 :::: {.generated-output}
-Examples of counting words, the null-case:
+Counting words, the zero-case:
 
-``` {.python .doctest #test-word-count}
+``` {.python .doctest #word-count}
 word_count("")
 ---
 0
@@ -150,7 +150,7 @@ word_count("")
 
 And a small sentence:
 
-``` {.python .doctest #test-word-count}
+``` {.python .doctest #word-count}
 word_count("Hebban olla uogala")
 ---
 3

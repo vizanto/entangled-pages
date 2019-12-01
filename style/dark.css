@@ -21,6 +21,30 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: anonymous;
+    src: url(fonts/AnonymousPro-Regular.ttf);
+}
+
+@font-face {
+    font-family: anonymous;
+    src: url(fonts/AnonymousPro-Italic.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: anonymous;
+    src: url(fonts/AnonymousPro-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: anonymous;
+    src: url(fonts/AnonymousPro-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: bold;
+}
+
 body {
     background: white;
     color: black;
@@ -270,7 +294,7 @@ p {
 .example {
   padding: 0px;
   overflow: hidden;
-  margin: 0 10pt 50pt 10pt;
+  margin: 0 10pt 0pt 10pt;
   background-color: #f1f1f1;
 } 
 
@@ -315,7 +339,7 @@ p {
     margin: 15pt 0pt;
 }
 
-.example .generated-output .annotatedCode p {
+.example .generated-output .annotated-code p {
     margin-bottom: 2pt;
 }
 
@@ -324,12 +348,30 @@ p {
     margin: 0;
     margin-left: 10pt;
 }
+
 /* collapsible example }}}1 */
 /* Code blocks {{{1 */
 code
 {
-    font-family: "Anonymous Pro", Courier, monospace;
+    font-family: anonymous, monospace;
     font-size: 12pt;
+}
+
+div.doctest[data-status="SUCCESS"] pre.result code span
+{
+    color: green!important;
+}
+
+div.doctest div.doctestInput div.sourceCode {
+    border-radius: 5pt 5pt 0 0;
+}
+
+div.doctest div.doctestOutput div.sourceCode {
+    border-radius: 0pt 0pt 5pt 5pt;
+}
+
+div.doctest div.doctestOutput div.sourceCode pre::before {
+    content: "⇛ ";
 }
 
 div.sourceCode

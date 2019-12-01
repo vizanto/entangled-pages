@@ -29,7 +29,7 @@ js_tgts := $(js:js/%=$(build_dir)/%)
 pandoc_args := -s -t html5
 pandoc_args += --highlight-style style/syntax.theme
 pandoc_args += --filter pandoc-citeproc --mathjax
-pandoc_args += --lua-filter filters/annotate-code-blocks.lua
+pandoc_args += --filter pandoc-test
 pandoc_args += --css dark.css
 
 #|
