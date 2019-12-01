@@ -183,17 +183,27 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
-:::
-
 <div style="text-align: center;">
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
   <span class="dot" onclick="currentSlide(4)"></span>
 </div>
-
 <script src="jquery-3.3.1.slim.min.js"></script>
 <script src="anim.js"></script>
+:::
+
+## Python filters
+
+We have created a set of Python based Pandoc filters that can:
+
+- **Tangle** your code
+- Add **name tags** to rendered output
+- Run **documentation tests** through Jupyter
+
+The Python filters act as prototyping platform for features that will be included with Entangled. It is easy to install and has almost no dependencies outside of Pandoc and a recent version of Python (&ge; 3.7). This also makes the Python filters very easy to setup on automated builds, like Github Actions.
+
+More information on these Pandoc filters: [https://github.com/entangled/filters](https://github.com/entangled/filters)
 
 # Demo Gallery {#section-examples}
 
