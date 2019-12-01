@@ -63,9 +63,9 @@ def vector_length(x, y):
 ::: {.example}
 :::: {.given-input}
 ~~~markdown
- To count the words in a sentence, first split
- the sentence into words, then count the number
- of words in the list.
+ To count the words in a sentence, first
+ split the sentence into words, then
+ count the number of words in the list.
 
  ``` {.python #word-count}
  def word_count(sentence):
@@ -74,14 +74,15 @@ def vector_length(x, y):
      return count
  ```
 
- The default arguments to the `.split` method
- split on any white space.
+ The default arguments to the `.split`
+ method split on any white space.
 
  ``` {.python #split-into-words}
  words = sentence.split()
  ```
 
- Counting is done with the `length` function.
+ Counting is done with the `length`
+ function.
 
  ``` {.python #count-words}
  count = len(words)
@@ -117,7 +118,7 @@ count = len(words)
 
 > “Talk is cheap. Show me the code.” [Linus Torvalds]()
 
-#### Test your documentation
+#### Test your documentation (comming soon!)
 ::: {.example}
 :::: {.given-input}
 ~~~markdown
@@ -228,7 +229,6 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 
 # External Links {#section-links}
 
-
 ## Literate Books
 These are some awesome books written with a literate philosophy in mind.
 
@@ -261,6 +261,19 @@ Does not use *noweb*, but subscribes to the many founding principles of literate
 From signals to symphonies, this book fuses the authors' passion for music and the Haskell programming language.
 :::
 ::::
+
+## Pandoc filters
+
+### [Knitty](https://github.com/kiwi0fruit/knitty)
+Expands code-cells through a Jupyter interface. Uses Panflute. 
+
+### [pandocsql](https://github.com/alexpdp7/pandocsql)
+Inserts tables in your markdown into an Sqlite database, and run queries that appear as tables in the output. Uses Panflute.
+
+## Dev tools
+
+### [Panflute](https://github.com/sergiocorreia/panflute)
+A "Pythonic" interface for creating Pandoc filters.
 :::::
 
 <footer><address>2019 Johan Hidding, [![Netherlands eScience Center](img/escience_black.png)](https://esciencecenter.nl)</address></footer>

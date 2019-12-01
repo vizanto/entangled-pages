@@ -62,7 +62,7 @@ watch-browser:
 clean:
 	rm -rf $(build_dir)
 
-build: $(build_dir)/index.html $(build_dir)/$(style) $(image_tgts) $(js_tgts)
+build: $(build_dir)/index.html $(build_dir)/$(style) $(image_tgts) $(js_tgts) $(build_dir)/fonts
 
 # Rules ============================================
 
@@ -81,6 +81,10 @@ $(build_dir)/img/%: img/%
 $(build_dir)/%.css: style/%.css
 	@mkdir -p $(build_dir)
 	cp $< $@
+
+$(build_dir)/fonts: fonts
+	@mkdir -p $(build_dir)
+	cp -r $< $@
 
 .PHONY: all clean build watch watch-pandoc watch-browser
 

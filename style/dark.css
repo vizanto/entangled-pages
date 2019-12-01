@@ -1,12 +1,35 @@
+@font-face {
+    font-family: zillaSlab;
+    src: url(fonts/ZillaSlab-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: zillaSlab;
+    src: url(fonts/ZillaSlab-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: niramit;
+    src: url(fonts/Niramit-Light.ttf);
+}
+
+@font-face {
+    font-family: niramit;
+    src: url(fonts/Niramit-LightItalic.ttf);
+    font-style: italic;
+}
+
 body {
     background: white;
     color: black;
     font-size: 14pt;
     line-height: 1.5;
-    font-family: "Zilla Slab";
+    font-family: zillaSlab, serif;
     /* "Trirong", "Saira SemiCondensed", "Niramit", "Lato", "Kulim Park", "IBM Plex Serif", "Grenze", "Gentium Basic", "Crimson Pro"; */
     /* "Niramit", "Barlow Semi Condensed", "Athiti", "Anaheim"; */
-    font-weight: 380;
+    font-weight: 300;
     margin: 0;
     padding: 0;
     position: relative;
@@ -14,27 +37,27 @@ body {
 }
 
 strong {
-    font-weight: 440;
+    font-weight: 500;
 }
 
 #content {
-    top: 180pt;
     margin: 0;
+    margin-top: 210pt;
 }
 
 h1 {
     margin: 40pt 10pt 10pt 10pt;
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
 }
 
 h2 {
     margin: 10pt 10pt 10pt 10pt;
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
 }
 
 h3 {
     margin: 10pt 10pt 10pt 10pt;
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
 }
 
 p {
@@ -149,9 +172,9 @@ footer a:hover {
 
 /* Header {{{1 */
 #title-block-header {
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
     position: absolute;
-    top: 60pt;
+    top: -150pt;
     width: 100%;
     height: 120pt;
     background: #333;
@@ -160,6 +183,7 @@ footer a:hover {
     margin: 0;
     /*text-shadow: 0 0 5px #00aeef;*/
 }
+
 #title-block-header .title {
     text-align: center;
     font-size: 50pt;
@@ -173,11 +197,11 @@ footer a:hover {
 /* }}}1 */
 /* Navbar {{{1 */
 #topbar {
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
     font-size: 12pt;
     font-weight: 400;
     position: absolute;
-    top: 0;
+    top: -210pt;
     height: 60pt;
     width: 100%;
     padding-top: 2pt;
@@ -232,7 +256,7 @@ h4 {
     background: #00aeef;
     color: white;
     text-shadow: 0 0 1px black;
-    font-family: "Niramit";
+    font-family: niramit, sans-serif;
     margin: 0 10pt;
     padding: 4pt 0 6pt 10pt;
     border-radius: 8pt 8pt 0pt 0pt;
