@@ -16,16 +16,14 @@ However, for privacy concerns, some people use blockers that stop the Google API
 @font-face {
     font-family: zillaSlab;
     font-weight: 300;
-    src: local("Zilla Slab"),
-         url(fonts/ZillaSlab-Light.woff2) format('woff2'),
+    src: url(fonts/ZillaSlab-Light.woff2) format('woff2'),
          url(fonts/ZillaSlab-Light.ttf) format('ttf');
 }
 
 @font-face {
     font-family: zillaSlab;
     font-weight: 500;
-    src: local("Zilla Slab"),
-         url(fonts/ZillaSlab-Medium.woff2) format('woff2'),
+    src: url(fonts/ZillaSlab-Medium.woff2) format('woff2'),
          url(fonts/ZillaSlab-Medium.ttf) format('ttf');
 }
 
@@ -401,11 +399,11 @@ div.doctest div.doctestInput div.sourceCode {
     border-radius: 5pt 5pt 0 0;
 }
 
-div.doctest div.doctestOutput div.sourceCode {
+div.doctest div.doctestResult div.sourceCode {
     border-radius: 0pt 0pt 5pt 5pt;
 }
 
-div.doctest div.doctestOutput div.sourceCode pre::before {
+div.doctest div.doctestResult div.sourceCode pre::before {
     content: "⇛ ";
 }
 

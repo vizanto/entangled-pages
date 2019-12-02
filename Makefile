@@ -19,7 +19,8 @@
 
 build_dir := build
 src_dir := src
-source := $(src_dir)/index.md
+sources := index.md setting-up.md eval-and-doctest.md
+html_tgts := $(sources:%.md=$(build_dir)/%.html)
 style := nlesc.css fonts.css
 style_tgts := $(style:%=$(build_dir)/%)
 images := $(shell find img/*)
@@ -31,7 +32,7 @@ pandoc_args := -s -t html5
 pandoc_args += --highlight-style style/syntax.theme
 pandoc_args += --filter pandoc-citeproc --mathjax
 pandoc_args += --filter pandoc-test
-pandoc_args += --css dark.css
+pandoc_args += --css nlesc.css
 
 #|
 #| Targets
@@ -45,14 +46,14 @@ help:
 	| fold -s -w 80
 
 #| * `watch`: reload browser upon changes
-watch: $(build_dir)/index.html $(build_dir)/img $(style_tgts)
+watch: $(html_tgts) $(build_dir)/img $(style_tgts)
 	@tmux new-session make --no-print-directory watch-pandoc \; \
 		split-window -v make --no-print-directory watch-browser \; \
 		select-layout even-vertical \;
 
 watch-pandoc:
 	@while true; do \
-		inotifywait -e close_write $(source) style/* Makefile img/*; \
+		inotifywait -e close_write $(sources:%=src/%) style/* Makefile img/*; \
 		make build; \
 	done
 
@@ -63,7 +64,7 @@ watch-browser:
 clean:
 	rm -rf $(build_dir)
 
-build: $(build_dir)/index.html $(style_tgts) $(image_tgts) $(js_tgts) $(build_dir)/fonts
+build: $(html_tgts) $(style_tgts) $(image_tgts) $(js_tgts) $(build_dir)/fonts
 
 # Rules ============================================
 

@@ -158,6 +158,11 @@ word_count("Hebban olla uogala")
 ::::
 :::
 
+## Read more
+
+- [Setting up a Literate Code project](setting-up.html)
+- [Code Evaluation and Documentation Testing](eval-and-doctest.html)
+
 # Entangled {#section-entangled}
 
 Entangled makes literate programming **easier**. It keeps the markdown and program source in sync. This makes it more convenient to extend and debug your literate code.
@@ -193,6 +198,11 @@ Entangled makes literate programming **easier**. It keeps the markdown and progr
 <script src="anim.js"></script>
 :::
 
+### Installing Entangled
+Entangled is written in Haskell, and can be built on Linux, MacOS and Windows. Currently the best way to install, is to [git clone https://github.com/entangled/entangled](https://github.com/entangled/entangled), and build with GHC &ge; 8.6 using Cabal 3.0. Most GNU/Linux distributions ship an older version of Haskell. The easiest way to install a newer version is through [GHCUp](https://www.haskell.org/ghcup/).
+
+We are working on better deployment options that don't depend on compiling from source. If you are hesitant to go through the trouble of installing Haskell, there is a Python module that will let you do most of the things Entangled can do, except the live-updating reverse tangle thing.
+
 ## Python filters
 
 We have created a set of Python based Pandoc filters that can:
@@ -202,6 +212,10 @@ We have created a set of Python based Pandoc filters that can:
 - Run **documentation tests** through Jupyter
 
 The Python filters act as prototyping platform for features that will be included with Entangled. It is easy to install and has almost no dependencies outside of Pandoc and a recent version of Python (&ge; 3.7). This also makes the Python filters very easy to setup on automated builds, like Github Actions.
+
+Install these filters using:
+
+        pip install entangled-filters
 
 More information on these Pandoc filters: [https://github.com/entangled/filters](https://github.com/entangled/filters)
 
@@ -238,6 +252,14 @@ More information on these Pandoc filters: [https://github.com/entangled/filters]
 :::
 
 # External Links {#section-links}
+
+## Blogs
+
+### [Why all you'll ever need is Markdown](https://blog.esciencecenter.nl/why-all-youll-ever-need-is-markdown-dc604f0ab309)
+Introduction to Pandoc, and Pandoc filters.
+
+### [Entangled, a bi-directional Literate Programming tool](https://blog.esciencecenter.nl/entangled-1744448f4b9f)
+Presenting Entangled, a tool for pain free literate programming.
 
 ## Literate Books
 These are some awesome books written with a literate philosophy in mind.

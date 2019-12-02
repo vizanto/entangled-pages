@@ -2,16 +2,14 @@
 @font-face {
     font-family: zillaSlab;
     font-weight: 300;
-    src: local("Zilla Slab"),
-         url(fonts/ZillaSlab-Light.woff2) format('woff2'),
+    src: url(fonts/ZillaSlab-Light.woff2) format('woff2'),
          url(fonts/ZillaSlab-Light.ttf) format('ttf');
 }
 
 @font-face {
     font-family: zillaSlab;
     font-weight: 500;
-    src: local("Zilla Slab"),
-         url(fonts/ZillaSlab-Medium.woff2) format('woff2'),
+    src: url(fonts/ZillaSlab-Medium.woff2) format('woff2'),
          url(fonts/ZillaSlab-Medium.ttf) format('ttf');
 }
 
