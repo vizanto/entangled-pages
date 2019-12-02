@@ -20,7 +20,8 @@
 build_dir := build
 src_dir := src
 source := $(src_dir)/index.md
-style := dark.css
+style := nlesc.css fonts.css
+style_tgts := $(style:%=$(build_dir)/%)
 images := $(shell find img/*)
 image_tgts := $(images:%=$(build_dir)/%)
 js := $(shell find js/*.js)
@@ -44,7 +45,7 @@ help:
 	| fold -s -w 80
 
 #| * `watch`: reload browser upon changes
-watch: $(build_dir)/index.html $(build_dir)/img $(build_dir)/$(style)
+watch: $(build_dir)/index.html $(build_dir)/img $(style_tgts)
 	@tmux new-session make --no-print-directory watch-pandoc \; \
 		split-window -v make --no-print-directory watch-browser \; \
 		select-layout even-vertical \;
@@ -62,7 +63,7 @@ watch-browser:
 clean:
 	rm -rf $(build_dir)
 
-build: $(build_dir)/index.html $(build_dir)/$(style) $(image_tgts) $(js_tgts) $(build_dir)/fonts
+build: $(build_dir)/index.html $(style_tgts) $(image_tgts) $(js_tgts) $(build_dir)/fonts
 
 # Rules ============================================
 
@@ -83,8 +84,8 @@ $(build_dir)/%.css: style/%.css
 	cp $< $@
 
 $(build_dir)/fonts: fonts
-	@mkdir -p $(build_dir)
-	cp -r $< $@
+	@mkdir -p $(build_dir)/fonts
+	cp fonts/* $(build_dir)/fonts
 
 .PHONY: all clean build watch watch-pandoc watch-browser
 
