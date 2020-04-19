@@ -415,7 +415,8 @@ div.sourceCode
     padding: 10pt;
     
     overflow: hidden;
-    width: 30em;
+    margin-left: 40pt;
+    width: 50em;
     /* width: 40em; */
 }
 

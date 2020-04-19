@@ -161,7 +161,8 @@ word_count("Hebban olla uogala")
 ## Read more
 
 - [Setting up a Literate Code project](setting-up.html)
-- [Code Evaluation and Documentation Testing](eval-and-doctest.html)
+- [Use the Bootstrap 4 template](https://entangled.github.io/bootstrap)
+<!-- - [Code Evaluation and Documentation Testing](eval-and-doctest.html) -->
 
 # Entangled {#section-entangled}
 
