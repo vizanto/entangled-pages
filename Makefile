@@ -1,92 +1,87 @@
-#| Makefile
-#| ========
-#|
-#| Write your presentation in Markdown. This `Makefile` lets you watch the sources
-#| and preview the presentation, live in your browser.
-#|
-#| Usage
-#| -----
-#|
-#|     make [help|clean|watch|pages]
-#|
-#| Prerequisites
-#| -------------
-#|
-#| * Pandoc
-#| * Node (stable)
-#| * inotify-tools
-#|
+# This is a suggestion for a Makefile. This assumes you have executed,
+#
+#     git submodule add git@github.com:entangled/bootstrap-submodule bootstrap
+#
+# and that you have your literate sources in `./lit`.
+#
+# Make sure you have the following things installed:
+#
+#   - Entangled (the daemon)
+#   - entangled-filters (the pandoc filters: pip install ...)
+#   - Pandoc
+#   - BrowserSync (npm install -g ...)
+#   - InotifyTools (available from most GNU/Linux distributions)
+#
+# The website will be built in `./docs`, from which it can be served as
+# github.io pages.
+#
+#
+# You should list the Markdown sources here in the order that they should
+# appear.
+input_files := lit/index.md lit/slasher.md lit/99-bottles.md lit/hello-world.md
+html_targets := $(input_files:lit/%.md=docs/%.html)
 
-build_dir := build
-src_dir := src
-sources := index.md setting-up.md eval-and-doctest.md
-html_tgts := $(sources:%.md=$(build_dir)/%.html)
-style := nlesc.css fonts.css
-style_tgts := $(style:%=$(build_dir)/%)
-images := $(shell find img/*)
-image_tgts := $(images:%=$(build_dir)/%)
-js := $(shell find js/*.js)
-js_tgts := $(js:js/%=$(build_dir)/%)
+# Arguments to Pandoc; these are reasonable defaults
+pandoc_args += --template bootstrap/template.html
+pandoc_args += --css css/mods.css
+pandoc_args += -t html5 -s --mathjax --toc
+pandoc_args += --toc-depth 1
+pandoc_args += --filter pandoc-bootstrap
+pandoc_args += --filter pandoc-citeproc
+pandoc_args += --filter pandoc-fignos
+pandoc_args += -f markdown+multiline_tables+simple_tables
 
-pandoc_args := -s -t html5
-pandoc_args += --highlight-style style/syntax.theme
-pandoc_args += --filter pandoc-citeproc --mathjax
-pandoc_args += --filter pandoc-annotate-codeblocks
-pandoc_args += --css nlesc.css
+# Load syntax definitions for languages that are not supported
+# by default. These XML files are in the format of the Kate editor.
+pandoc_args += --syntax-definition bootstrap/elm.xml
+pandoc_args += --syntax-definition bootstrap/pure.xml
+pandoc_args += --highlight-style tango
 
-#|
-#| Targets
-#| -------
+# Any file in the `lit` directory that is not a Markdown source 
+# is to be copied to the `docs` directory
+static_files := $(shell find -L lit -type f -not -name '*.md')
+static_targets := $(static_files:lit/%=docs/%)
 
-#| * `help`: print this help
-help:
-	@ grep -e '^#|' Makefile \
-	| sed -e 's/^#| \?\(.*\)/\1/' \
-	| pandoc -f markdown -t filters/terminal.lua \
-	| fold -s -w 80
+.PHONY: site clean watch watch-pandoc watch-browser-sync
 
-#| * `watch`: reload browser upon changes
-watch: $(html_tgts) $(build_dir)/img $(style_tgts)
+# This should build everything needed to generate your web site. That includes
+# possible Javascript targets that may need compiling.
+site: $(html_targets) docs/css/mods.css $(static_targets) docs/js/slasher.min.js
+
+clean:
+	rm -rf docs
+
+# Starts a tmux with Entangled, Browser-sync and an Inotify loop for running
+# Pandoc.
+watch:
 	@tmux new-session make --no-print-directory watch-pandoc \; \
-		split-window -v make --no-print-directory watch-browser \; \
+		split-window -v make --no-print-directory watch-browser-sync \; \
+		split-window -v entangled daemon \; \
 		select-layout even-vertical \;
 
 watch-pandoc:
 	@while true; do \
-		inotifywait -e close_write $(sources:%=src/%) style/* Makefile img/*; \
-		make build; \
+		inotifywait -e close_write bootstrap lit Makefile; \
+		make site; \
 	done
 
-watch-browser:
-	browser-sync start -s $(build_dir) -f $(build_dir) --no-notify
+watch-browser-sync:
+	browser-sync start -w -s docs
 
-#| * `clean`: clean reveal.js and docs
-clean:
-	rm -rf $(build_dir)
+$(html_targets): docs/%.html: lit/%.md bootstrap/template.html Makefile
+	@mkdir -p docs
+	pandoc $(pandoc_args) $< -o $@
 
-build: $(html_tgts) $(style_tgts) $(image_tgts) $(js_tgts) $(build_dir)/fonts
-
-# Rules ============================================
-
-$(build_dir)/%.js: js/%.js
-	@mkdir -p $(build_dir)
+docs/css/mods.css: bootstrap/mods.css
+	@mkdir -p docs/css
 	cp $< $@
 
-$(build_dir)/%.html: $(src_dir)/%.md style/syntax.theme filters/annotate-code-blocks.lua Makefile
-	@mkdir -p $(build_dir)
-	pandoc $(pandoc_args) -o $@ $<
-
-$(build_dir)/img/%: img/%
-	@mkdir -p $(build_dir)/img
-	cp -r img/* $(build_dir)/img
-
-$(build_dir)/%.css: style/%.css
-	@mkdir -p $(build_dir)
+$(static_targets): docs/%: lit/%
+	@mkdir -p $(dir $@)
 	cp $< $@
 
-$(build_dir)/fonts: fonts
-	@mkdir -p $(build_dir)/fonts
-	cp fonts/* $(build_dir)/fonts
-
-.PHONY: all clean build watch watch-pandoc watch-browser
-
+docs/js/slasher.min.js: slasher/src/Main.elm
+	@mkdir -p docs/js
+	make -C slasher
+	cp slasher/slasher.min.js docs/js
+	
