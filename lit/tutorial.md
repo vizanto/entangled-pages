@@ -7,6 +7,16 @@ license:  "[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)"
 github: "https://github.com/entangled/entangled/"
 ---
 
+# Installing Entangled
+To install Entangled, for the moment you'll have to compile from source. The easiest way to install Haskell is through [GHCUp](https://www.haskell.org/ghcup/). We recommend you use GHC version 8.8.
+
+```bash
+git clone https://github.com/entangled/entangled.git
+cd entangled
+cabal build
+cabal install
+```
+
 # Using Cookiecutter
 This has the same prerequisites as listed below. In addition, make sure you have Cookiecutter installed
 

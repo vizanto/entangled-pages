@@ -1,3 +1,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git@github.com:entangled/bootstrap-submodule
+[submodule "docs"]
+	path = docs
+	url = git@github.com:entangled/entangled.github.io
