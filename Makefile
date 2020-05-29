@@ -18,7 +18,7 @@
 #
 # You should list the Markdown sources here in the order that they should
 # appear.
-input_files := lit/index.md lit/tutorial.md
+input_files := lit/index.md lit/tutorial.md lit/manual.md
 html_targets := $(input_files:lit/%.md=docs/%.html)
 
 # Arguments to Pandoc; these are reasonable defaults
@@ -37,6 +37,7 @@ pandoc_args += -f markdown+multiline_tables+simple_tables
 # by default. These XML files are in the format of the Kate editor.
 pandoc_args += --syntax-definition bootstrap/elm.xml
 pandoc_args += --syntax-definition bootstrap/pure.xml
+pandoc_args += --syntax-definition bootstrap/dhall.xml
 # pandoc_args += --highlight-style tango
 pandoc_args += --highlight-style style/syntax.theme
 
