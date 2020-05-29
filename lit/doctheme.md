@@ -193,6 +193,15 @@ h4 {
     flex: 1;
     }
 
+    .example .given-input pre {
+        padding-left: 1em;
+    }
+
+    .example pre {
+        font-size: 12pt;
+    }
+
+
     blockquote p {
         width: 100%;
     }
