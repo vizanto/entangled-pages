@@ -155,6 +155,13 @@ h4 {
     margin-left: 10pt;
 }
 
+.example .given-input pre {
+    padding-left: 0.5em;
+}
+
+.example pre {
+    font-size: smaller;
+}
 
 @media only screen and (min-width: 768px) {
     body {
