@@ -6,7 +6,7 @@ license:  "[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)"
 github: "https://github.com/entangled/entangled/"
 ---
 
-# Introducion
+# Introduction
 Entangled helps you write Literate Programs in Mardown. You put all your code inside Markdown code blocks. Entangled automatically extracts the code and writes it to more traditional source files. You can then edit these generated files, and the changes are being fed back to the Markdown.
 
 ``` {.bash .eval #entangled-version}
