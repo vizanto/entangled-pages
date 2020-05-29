@@ -1,28 +1,29 @@
 ---
 title: Entangled
 subtitle: literate programming for the new millennium
+footer: "[![](img/escience_white.png){style='height: 20pt'}](https://esciencecenter.nl/)"
+license:  "[Apache 2](https://www.apache.org/licenses/LICENSE-2.0)"
+github: "https://github.com/entangled/entangled/"
 ---
-:::: {#topbar}
-[[Get started](#section-markdown)
- [About Entangled](#section-entangled)
- [Demo Gallery](#section-examples)
- [External Links](#section-links)
-]{#navigation}
-[[![Octocat](img/github.png) Find us on Github](https://github.com/entangled/entangled)&nbsp;
- [![Download](img/download.svg) Download Entangled](https://github.com/entangled/entangled/releases)
-]{#logobar}
-::::
 
-::::: {#content}
-> **Literate programming** [/ˈlɪtəɹət ˈpɹəʊɡɹæmɪŋ/]{.phonetic} (computing) Literate programming is a programming paradigm introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. [Wikipedia](https://en.wikipedia.org/wiki/Literate_programming)
-
-::: {#synopsis}
+<div class="container-fluid"><div class="row">
+:::: {#synopsis}
 - Create **live documents** in Markdown
 - Program in **any language** you like
 - Use your **favourite editor**
 - Works well with **version control**
 - Powered by **Pandoc**
-:::
+::::
+
+> **Literate programming** [/ˈlɪtəɹət ˈpɹəʊɡɹæmɪŋ/]{.phonetic} (computing) Literate programming is a programming paradigm introduced by Donald Knuth in which a program is given as an explanation of the program logic in a natural language, such as English, interspersed with snippets of macros and traditional source code, from which a compilable source code can be generated. [Wikipedia](https://en.wikipedia.org/wiki/Literate_programming)
+
+</div></div>
+
+# News
+
+- 2020/05/29 --- Version 1.0 of Entangled is released!
+- 2020/05/29 --- Version 0.6.1 of [Entangled filters](https://entangled.github.io/filters) is released.
+- 2020/05/28 --- New [examples repository](https://entangled.github.io/examples).
 
 # Get started {#section-markdown}
 
@@ -124,10 +125,8 @@ count = len(words)
 ~~~markdown
  Counting words, the zero-case:
 
- ``` {.python .doctest #word-count}
+ ``` {.python .eval #word-count}
  word_count("")
- ---
- 0
  ```
 
  And a small sentence:
@@ -135,17 +134,15 @@ count = len(words)
  ``` {.python .doctest #word-count}
  word_count("Hebban olla uogala")
  ---
- 3
+ 4
  ```
 ~~~
 ::::
 :::: {.generated-output}
 Counting words, the zero-case:
 
-``` {.python .doctest #word-count}
+``` {.python .eval #word-count}
 word_count("")
----
-0
 ```
 
 And a small sentence:
@@ -153,14 +150,15 @@ And a small sentence:
 ``` {.python .doctest #word-count}
 word_count("Hebban olla uogala")
 ---
-3
+4
 ```
 ::::
 :::
 
 ## Read more
 
-- [Setting up a Literate Code project](setting-up.html)
+- [Examples of literate programs in Entangled](https://entangled.github.io/examples)
+- [Setting up a Literate Code project](tutorial.html)
 - [Use the Bootstrap 4 template](https://entangled.github.io/bootstrap)
 <!-- - [Code Evaluation and Documentation Testing](eval-and-doctest.html) -->
 
@@ -168,43 +166,12 @@ word_count("Hebban olla uogala")
 
 Entangled makes literate programming **easier**. It keeps the markdown and program source in sync. This makes it more convenient to extend and debug your literate code.
 
-::: {#slide-show}
-:::: {.slide .fade}
-![Write your documentation, and fire up entangled](img/01-getting-started.png){ still="img/01-getting-started.png" width="768" .anim }
-::::
-
-:::: {.slide .fade}
-![Add annotated code blocks](img/02-adding-code.png){ still="img/02-adding-code.png" width="768" .anim }
-::::
-
-:::: {.slide .fade}
-![Use references to grow your program](img/03-edit-code.png){ still="img/03-edit-code.png" width="768" .anim }
-::::
-
-:::: {.slide .fade}
-![Fix bugs like you'd normally do](img/04-fixing-bugs.png){ still="img/04-fixing-bugs.png" width="768" .anim }
-::::
-
-<div class="nav" style="text-align:center">
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<div style="text-align: center;">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-</div>
-<script src="jquery-3.3.1.slim.min.js"></script>
-<script src="anim.js"></script>
-:::
-
 ### Installing Entangled
 Entangled is written in Haskell, and can be built on Linux, MacOS and Windows. Currently the best way to install, is to [git clone https://github.com/entangled/entangled](https://github.com/entangled/entangled), and build with GHC &ge; 8.6 using Cabal 3.0. Most GNU/Linux distributions ship an older version of Haskell. The easiest way to install a newer version is through [GHCUp](https://www.haskell.org/ghcup/).
 
 We are working on better deployment options that don't depend on compiling from source. If you are hesitant to go through the trouble of installing Haskell, there is a Python module that will let you do most of the things Entangled can do, except the live-updating reverse tangle thing.
 
-## Python filters
+## Pandoc filters
 
 We have created a set of Python based Pandoc filters that can:
 
@@ -220,93 +187,78 @@ Install these filters using:
 
 More information on these Pandoc filters: [https://github.com/entangled/filters](https://github.com/entangled/filters)
 
-# Demo Gallery {#section-examples}
-
-#### Hello, World!
-::: {#examples-div}
-:::: {.example}
-![Apollo Earthrise](img/hello-world-thumb.jpg)
-
-[Hello World in C++](https://entangled.github.io/entangled/hello-world.html): Teaches the basics of literate programming using Markdown and fenced code blocks. Also shows how to use a BibTeX file for references.
-::::
-
-#### 99 Bottles
-:::: {.example}
-![99 bottles thumbnail](img/99-bottles-thumb.jpg)
-
-[99-bottles in C++](https://entangled.github.io/entangled/99-bottles.html): Over-engineered song-text generator. Teaching how to setup a basic C++ program with enTangleD, use of ArgAgg to parse command-line arguments, use of FmtLib to do string formatting and setting up a slightly non-basic Makefile.
-::::
-
-#### Slasher
-:::: {.example}
-![Slasher thumbnail](img/slasher-thumb.jpg)
-
-[Slasher](https://entangled.github.io/entangled/elm-slasher.html): a browser game written in Elm. A dashing hero is zipping across the screen, only deflected by slashes and backslashes. The game works, but the source may need some more literacy in some places.
-::::
-
-#### Cosmic web
-:::: {.example}
-![Adhesion code thumbnail](img/adhesion-code-thumb.jpg)
-
-[Adhesion code](https://jhidding.github.io/adhesion-code): presenting the cosmological adhesion model and its implementation in C++ and CGAL.
-::::
-:::
-
 # External Links {#section-links}
 
-## Blogs
+### Blogs
 
-### [Why all you'll ever need is Markdown](https://blog.esciencecenter.nl/why-all-youll-ever-need-is-markdown-dc604f0ab309)
-Introduction to Pandoc, and Pandoc filters.
+- [Why all you'll ever need is Markdown](https://blog.esciencecenter.nl/why-all-youll-ever-need-is-markdown-dc604f0ab309) --- Introduction to Pandoc, and Pandoc filters.
+- [Entangled, a bi-directional Literate Programming tool](https://blog.esciencecenter.nl/entangled-1744448f4b9f) --- Presenting Entangled, a tool for pain free literate programming.
 
-### [Entangled, a bi-directional Literate Programming tool](https://blog.esciencecenter.nl/entangled-1744448f4b9f)
-Presenting Entangled, a tool for pain free literate programming.
-
-## Literate Books
+### Literate Books
 These are some awesome books written with a literate philosophy in mind.
 
-### [Pharr, Jakob & Humphreys - Physically Based Rendering](https://www.pbrt.org/)
-:::: {.book}
-::: {.book-img}
-![spheres](img/pbrt.png)
-:::
-::: {.book-expl}
-Explains physically realistic 3D rendering, while implementing the same techniques in C++. This book is so amazing, it actually won an Acadamy Award for technical achievement. The book follows the same *noweb* notation for code block references we do.
-:::
-::::
+``` {.dhall .bootstrap-card-deck}
+let Card = ./schema/Card.dhall
+let Location = < Top | Right | Bottom | Left >
 
-### [Sussman & Wisdom - Structure and Interpretation of Classical Mechanics](https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-second-edition)
-:::: {.book}
-::: {.book-img}
-![sicm](img/sicm.jpg)
-:::
-::: {.book-expl}
-Does not use *noweb*, but subscribes to the many founding principles of literate programming. This is a text book on classical mechanics and specifically the Lagrangian and Hamiltonian discriptions of physics. The aim of translating concepts in classical mechanics to scheme code forced the authors to adopt a different notation for the underlying mathematics, because the traditional notation is too ambiguous.
-:::
-::::
+in [ Card :: { title = "Pharr, Jakob & Humphreys - Physically Based Rendering"
+             , text =
+                ''
+                Explains physically realistic 3D rendering, while implementing the same
+                techniques in C++. This book is so amazing, it actually won an Acadamy
+                Award for technical achievement. The book uses the same *noweb*
+                notation for code block references we do.
+                ''
+             , link = Some { href = "https://www.pbrt.org/"
+                           , content = "PBRT" }
+             , image = Some "img/pbrt.png"
+             , imageLocation = Location.Left
+             }
+   ]
+```
 
-### [Hudak & Quick - The Haskell School of Music](http://euterpea.com/haskell-school-of-music/)
-:::: {.book}
-::: {.book-img}
-![hsom](img/hsom.jpg)
-:::
-::: {.book-expl}
-From signals to symphonies, this book fuses the authors' passion for music and the Haskell programming language.
-:::
-::::
+``` {.dhall .bootstrap-card-deck}
+let Card = ./schema/Card.dhall
+let Location = < Top | Right | Bottom | Left >
 
-## Pandoc filters
+in [ Card :: { title = "Sussman & Wisdom - Structure and Interpretation of Classical Mechanics"
+             , text =
+                ''
+                Does not use *noweb*, but subscribes to the many founding
+                principles of literate programming. This is a text book on classical mechanics
+                and specifically the Lagrangian and Hamiltonian discriptions of physics.
+                ''
+             , link = Some { href = "https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-second-edition"
+                           , content = "SICM" }
+             , image = Some "img/sicm.jpg"
+             , imageLocation = Location.Left
+             }
+   ]
+```
 
-### [Knitty](https://github.com/kiwi0fruit/knitty)
-Expands code-cells through a Jupyter interface. Uses Panflute. 
+``` {.dhall .bootstrap-card-deck}
+let Card = ./schema/Card.dhall
+let Location = < Top | Right | Bottom | Left >
 
-### [pandocsql](https://github.com/alexpdp7/pandocsql)
-Inserts tables in your markdown into an Sqlite database, and run queries that appear as tables in the output. Uses Panflute.
+in [ Card :: { title = "Hudak & Quick - The Haskell School of Music"
+             , text =   
+                ''
+                From signals to symphonies, this book fuses the authors' passion for music and the Haskell programming language.
+                ''
+             , link = Some { href = "http://euterpea.com/haskell-school-of-music/"
+                           , content = "HSOM" }
+             , image = Some "img/hsom.jpg"
+             , imageLocation = Location.Left
+             }
+   ]
+```
 
-## Dev tools
+### Pandoc filters
 
-### [Panflute](https://github.com/sergiocorreia/panflute)
-A "Pythonic" interface for creating Pandoc filters.
-:::::
+- [Knitty](https://github.com/kiwi0fruit/knitty) --- Expands code-cells through a Jupyter interface. Uses Panflute. 
+- [pandocsql](https://github.com/alexpdp7/pandocsql) --- Inserts tables in your markdown into an Sqlite database, and run queries that appear as tables in the output. Uses Panflute.
 
-<footer><address>2019 Johan Hidding, [![Netherlands eScience Center](img/escience_black.png)](https://esciencecenter.nl)</address></footer>
+### Dev tools
+
+- [Panflute](https://github.com/sergiocorreia/panflute) --- A "Pythonic" interface for creating Pandoc filters.
+

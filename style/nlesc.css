@@ -1,5 +1,8 @@
-/* ------ language="CSS" file="style/nlesc.css" */
-@import url('fonts.css');
+/* ~\~ language=CSS filename=style/nlesc.css */
+/* ~\~ begin <<lit/doctheme.md|style/nlesc.css>>[0] */
+/* ~\~ begin <<lit/doctheme.md|import-google-fonts>>[0] */
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i,700,700i|Niramit:300,300i|Zilla+Slab:300,300i,500,500i&display=swap');
+/* ~\~ end */
 
 body {
     background: white;
@@ -483,13 +486,13 @@ figure img
 /* }}}1 */
 
 @media only screen and (min-width: 768px) {
-    /* ------ begin <<desktop-mode>>[0] */
+    /* ~\~ begin <<lit/doctheme.md|desktop-mode>>[0] */
     #title-block-header {
     top: -150pt;
     height: 120pt;
     padding: 20pt 0 10pt 0;
     }
-    
+
     #content {
     top: 180pt;
     left: 50%;
@@ -501,36 +504,36 @@ figure img
     margin-bottom: 30pt;
     /*margin: 0 0 0 -325pt;*/
     }
-    
+
     #topbar {
     height: 30pt;
     top: -180pt;
     }
-    
+
     #navigation {
     position: absolute;
     left: 10pt;
     margin-top: 5pt;
     }
-    
+
     #logobar {
     position: absolute;
     top: 0;
     right: 10pt;
     margin-top: 5pt;
     }
-    
+
     .example {
     display: flex;
     margin: 0 10pt 50pt 10pt;
     }
-    
+
     .example .given-input {
     flex: 1;
     }
     .example .generated-output {
     flex: 1;
     }
-    /* ------ end */
+    /* ~\~ end */
 }
-/* ------ end */
+/* ~\~ end */
