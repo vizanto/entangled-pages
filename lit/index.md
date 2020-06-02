@@ -25,6 +25,7 @@ Entangled helps you write Literate Programs in Mardown. You put all your code in
 
 ## News
 
+- 2020/06/02 --- New example: [LiteratePt](https://jhidding.github.io/literatept/), a translation of [SmallPt](https://www.kevinbeason.com/smallpt/) into literate Rust.
 - 2020/05/29 --- Version 1.0 of Entangled is released!
 - 2020/05/29 --- Version 0.6.1 of [Entangled filters](https://entangled.github.io/filters) is released.
 - 2020/05/28 --- New [examples repository](https://entangled.github.io/examples).
