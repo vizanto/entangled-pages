@@ -31,6 +31,7 @@ We're trying to increase the visibility of Entangled. If you like Entangled, ple
 
 ## News
 
+- 2020/06/03 --- New release: Entangled v1.0.3 now comes with a prebuild static binary for Linux. Get it here: [entangled-1.0.3-x86_64-GNU-Linux.tar.xz](https://github.com/entangled/entangled/releases/download/v1.0.3/entangled-1.0.3-x86_64-GNU-Linux.tar.xz)
 - 2020/06/02 --- New example: [C++2WASM](https://nlesc-jcer.github.io/cpp2wasm/#/), a guide to using your C++ code in web applications, by Stefan Verhoeven.
 - 2020/06/02 --- New example: [LiteratePt](https://jhidding.github.io/literatept/), a translation of [SmallPt](https://www.kevinbeason.com/smallpt/) into literate Rust.
 - 2020/05/29 --- Version 1.0 of Entangled is released!
@@ -180,21 +181,22 @@ word_count("Hebban olla uogala")
 
 # Installing Entangled {#section-entangled}
 
-Entangled makes literate programming **easier**. It keeps the markdown and program source in sync. This makes it more convenient to extend and debug your literate code.
+## Prebuilt binaries
+We provide a prebuilt binary for Linux. The binary is statically compiled, so it should run on any distro. You can download them [from the Github releases section](https://github.com/entangled/entangled/releases/latest). We're still working on providing binaries for Windows and MacOS.
 
-## Entangled command-line tool
+If you downloaded the latest tarball, you can install Entangled by copying the contents to `~/.local/`, or `/usr/local`. If you prefer an uncluttered `local` directory, checkout [GNU Stow](https://www.gnu.org/software/stow/).
+
+## From source
 Entangled is written in Haskell, and can be built on Linux, MacOS and Windows. Currently the best way to install, is to [git clone https://github.com/entangled/entangled](https://github.com/entangled/entangled), and build with GHC &ge; 8.6 using Cabal 3.0. Most GNU/Linux distributions ship an older version of Haskell. The easiest way to install a newer version is through [GHCUp](https://www.haskell.org/ghcup/).
-
-We are working on better deployment options that don't depend on compiling from source. If you are hesitant to go through the trouble of installing Haskell, there is a Python module that will let you do most of the things Entangled can do, except the live-updating reverse tangle thing.
 
 ## Pandoc filters
 We have created a set of Python based Pandoc filters that can:
 
-- **Tangle** your code
+- (forward) **Tangle** your code
 - Add **name tags** to rendered output
 - Run **documentation tests** through Jupyter
 
-The Python filters act as prototyping platform for features that will be included with Entangled. It is easy to install and has almost no dependencies outside of Pandoc and a recent version of Python (&ge; 3.7). This also makes the Python filters very easy to setup on automated builds, like Github Actions.
+It is easy to install and has almost no dependencies outside of Pandoc and a recent version of Python (&ge; 3.7). This also makes the Python filters very easy to setup on automated builds, like Github Actions.
 
 Install these filters using:
 
