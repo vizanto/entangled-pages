@@ -29,15 +29,6 @@ We're trying to increase the visibility of Entangled. If you like Entangled, ple
 > [![Entangled badge](https://img.shields.io/badge/entangled-Use%20the%20source!-%2300aeff)](https://entangled.github.io/)
 > ~~~
 
-## News
-
-- 2020/06/03 --- New release: Entangled v1.0.3 now comes with a prebuild static binary for Linux. Get it here: [entangled-1.0.3-x86_64-GNU-Linux.tar.xz](https://github.com/entangled/entangled/releases/download/v1.0.3/entangled-1.0.3-x86_64-GNU-Linux.tar.xz)
-- 2020/06/02 --- New example: [C++2WASM](https://nlesc-jcer.github.io/cpp2wasm/#/), a guide to using your C++ code in web applications, by Stefan Verhoeven.
-- 2020/06/02 --- New example: [LiteratePt](https://jhidding.github.io/literatept/), a translation of [SmallPt](https://www.kevinbeason.com/smallpt/) into literate Rust.
-- 2020/05/29 --- Version 1.0 of Entangled is released!
-- 2020/05/29 --- Version 0.6.1 of [Entangled filters](https://entangled.github.io/filters) is released.
-- 2020/05/28 --- New [examples repository](https://entangled.github.io/examples).
-
 # Get started {#section-markdown}
 
 > "A critical aspect of a programming language is the means it provides
@@ -169,6 +160,11 @@ word_count("Hebban olla uogala")
 :::
 
 # Documentation
+The latest version of Entangled is
+
+> ``` {.bash .eval #entangled-version}
+> entangled --version
+> ```
 
 - [Example gallery](https://entangled.github.io/examples)
 - [Tutorial: setting up a Literate project](tutorial.html)
@@ -188,6 +184,18 @@ If you downloaded the latest tarball, you can install Entangled by copying the c
 
 ## From source
 Entangled is written in Haskell, and can be built on Linux, MacOS and Windows. Currently the best way to install, is to [git clone https://github.com/entangled/entangled](https://github.com/entangled/entangled), and build with GHC &ge; 8.6 using Cabal 3.0. Most GNU/Linux distributions ship an older version of Haskell. The easiest way to install a newer version is through [GHCUp](https://www.haskell.org/ghcup/).
+
+## Running Entangled with Docker {#docker}
+Entangled is available as a [Docker image](https://hub.docker.com/r/nlesc/entangled).
+
+Assuming you have created a Markdown file, say `program.md`, you can start `entangled` by running
+
+```bash
+docker run --rm --user $(id -u):$(id -g) --volume $PWD:/data \
+        nlesc/entangled deamon ./program.md
+```
+
+This command starts a Docker container with the current working directory mounted as /data and running with your user/group id so files are written with the correct ownership.
 
 ## Pandoc filters
 We have created a set of Python based Pandoc filters that can:

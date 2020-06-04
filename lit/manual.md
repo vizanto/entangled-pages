@@ -22,6 +22,16 @@ The entangled command-line tool has several sub-commands.
 entangled --help
 ```
 
+There options here are global and may affect the operation of any of the sub-commands. The `-m` option makes all commands (except `daemon`) print out information in machine readable format:
+
+----------------- ------------------------
+`+ filename`      a file gets created
+`~ filename`      a file gets modified
+`- filename`      a file gets deleted
+----------------- ------------------------
+
+The `-c` option doesn't make changes to the file system, but it prints any action that would be done to `stdout` in machine readable format. If nothing would happen `entangled` returns exit code `0`, otherwise exit code `1`.
+
 The command you'll be using most often is `daemon`. To understand what the daemon does, it is instructive to first see what the other commands do.
 
 ## Config
@@ -182,8 +192,8 @@ The `lineDirectives` option gives a list of line-directive patterns. Some langua
 
 ``` {.dhall #schema}
 let lineDirectives =
-    [ { name = "C",          format = "#LINE {linenumber} \"{filename}\"" }
-    , { name = "C++",        format = "#LINE {linenumber} \"{filename}\"" }
+    [ { name = "C",          format = "#line {linenumber} \"{filename}\"" }
+    , { name = "C++",        format = "#line {linenumber} \"{filename}\"" }
     , { name = "Haskell",    format = "{{-# LINE {linenumber} \"{filename}\" #-}}" }
     ]
 ```
