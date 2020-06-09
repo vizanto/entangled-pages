@@ -31,11 +31,19 @@ cookiecutter https://github.com/entangled/bootstrap
 ```
 
 This will create a directory in your current working directory with the name that you give cookiecutter.
-Inside the new directory, run
+Inside the new directory, build the website.
+
+```bash
+make site
+```
+
+The result will appear in `./docs/index.html`. Now, make watch
 
 ```bash
 make watch
 ```
+
+and have fun!
 
 For more information, see [entangled.github.io/bootstrap](https://entangled.github.io/bootstrap).
 
@@ -78,9 +86,9 @@ These are the recommended steps to start a project using Entangled. Following th
    title: Hello World
    author: Hannah Johnson
    ---
-   
+
    Literate programming is awesome!
-   
+
    \`\`\` {.python #hello-world}
    print("Hello, World!")
    \`\`\`
@@ -122,4 +130,3 @@ These are the recommended steps to start a project using Entangled. Following th
    Have fun!
 
 8. Pro tip: check out the [Pandoc documentation on templates](https://pandoc.org/MANUAL.html#templates), and play around with `template.html` and `mods.css`. Create a fork of the `bootstrap-submodule` repository to save your settings.
-
