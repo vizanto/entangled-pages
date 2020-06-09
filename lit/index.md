@@ -169,6 +169,7 @@ The latest version of Entangled is
 - [Example gallery](https://entangled.github.io/examples)
 - [Tutorial: setting up a Literate project](tutorial.html)
 - [User Manual](manual.html)
+- [Use MkDocs to publish](https://entangled.github.io/mkdocs)
 
 ## Components
 - [Use the Bootstrap 4 template](https://entangled.github.io/bootstrap)

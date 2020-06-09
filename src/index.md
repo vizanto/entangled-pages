@@ -161,6 +161,7 @@ word_count("Hebban olla uogala")
 ## Read more
 
 - [Setting up a Literate Code project](setting-up.html)
+- [Use MkDocs to publish](https://entangled.github.io/mkdocs)
 - [Use the Bootstrap 4 template](https://entangled.github.io/bootstrap)
 <!-- - [Code Evaluation and Documentation Testing](eval-and-doctest.html) -->
 

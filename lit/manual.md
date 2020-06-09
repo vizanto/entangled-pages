@@ -200,3 +200,16 @@ let lineDirectives =
 
 To use the line directives you need to set the `useLineDirectives` option to `True`. Note that this option has the same downside as the `Annotate.Project` annotation method. Source files will change often, and you will have frequent recompiles.
 
+## Custom Markdown Syntax (since version 1.2.0)
+It may happen that you are working with a Markdown renderer that does not support the standard syntax that Entangled uses. In this case you can configure the syntax that Entangled parses using regular expressions. One instance where this is useful is in building sites with MkDocs (see [instructions on MkDocs](https://entangled.github.io/mkdocs)). The following syntax rules can be made to work with MkDocs.
+
+``` {.dhall #config}
+let syntax : entangled.Syntax =
+    { matchCodeStart       = "^[ ]*```[[:alpha:]]+"
+    , matchCodeEnd         = "^[ ]*```"
+    , extractLanguage      = "```([[:alpha:]]+)"
+    , extractReferenceName = "```[[:alpha:]]+[ ]+.*id=\"([^\"]*)\".*"
+    , extractFileName      = "```[[:alpha:]]+[ ]+.*file=\"([^\"]*)\".*" 
+    }
+```
+
