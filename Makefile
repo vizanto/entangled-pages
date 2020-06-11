@@ -72,6 +72,9 @@ watch-pandoc:
 watch-browser-sync:
 	browser-sync start -w -s docs
 
+publish:
+	cd docs && git commit -a -m "automatic update" && git push
+
 $(html_targets): docs/%.html: lit/%.md bootstrap/template-topbar.html Makefile
 	@mkdir -p docs
 	pandoc $(pandoc_args) $< -o $@

@@ -128,9 +128,8 @@ This starts a loop waiting for events on your filesystem. If any of the involved
 # Configuration
 The Entangled configuration is written in the [**Dhall language**](https://dhall-lang.org/). Dhall is very strict when it comes to following a schema, which is completely encoded in its type system. When you run `entangled config > entangled.dhall`, you'll get a configuration file that you can edit for greater hapiness. It should start with the following (or similar) lines:
 
-``` {.dhall #config}
-let entangled = https://raw.githubusercontent.com/entangled/entangled/v1.0.0/data/config-schema.dhall
-                sha256:a924fcffa514e3909459e48c45924886062ff4a77be582af0517f9c4bae7ae73
+``` {.bash #config .eval}
+entangled config -m | head -n2
 ```
 
 This imports the schema from the released version on Github. This is cached locally and checked against the hash key for integrity.
@@ -177,7 +176,7 @@ in { entangled = entangled.Config :: { database = database
 
 The `::` operator updates the default values in left-hand side with those in the right-hand side.
 
-## Types of annotation
+## Types of annotation {#annotation-config}
 The `annotate` option tells the method of annotation. Currently we support three values:
 
 - `entangled.Annotate.Naked` --- No annotation, stitching will not work
@@ -200,7 +199,7 @@ let lineDirectives =
 
 To use the line directives you need to set the `useLineDirectives` option to `True`. Note that this option has the same downside as the `Annotate.Project` annotation method. Source files will change often, and you will have frequent recompiles.
 
-## Custom Markdown Syntax (since version 1.2.0)
+## Custom Markdown Syntax (since version 1.2.0) {#custom-syntax}
 It may happen that you are working with a Markdown renderer that does not support the standard syntax that Entangled uses. In this case you can configure the syntax that Entangled parses using regular expressions. One instance where this is useful is in building sites with MkDocs (see [instructions on MkDocs](https://entangled.github.io/mkdocs)). The following syntax rules can be made to work with MkDocs.
 
 ``` {.dhall #config}
@@ -212,4 +211,85 @@ let syntax : entangled.Syntax =
     , extractFileName      = "```[[:alpha:]]+[ ]+.*file=\"([^\"]*)\".*" 
     }
 ```
+
+# Standard syntax
+The standard syntax is aimed to work well together with Pandoc. Every code block is delimited with three back ticks. Added to the opening line is a sequence of space separated **code properties**. These properties align with the CSS attributes that would end up in the generated HTML. For those unfamiliar with CSS:
+
+- `#identifier`; a name prefixed with a `#` (sharp), identifies the object, only one of these should be present per item
+- `.class`; a name prefixed with `.` (period), assigns the object to a class, a object can belong to any number of classes
+- `key=value`; a name suffixed with `=` (equals), optionally followed by a value, adds any meta-data attribute to the object
+
+The complete syntax of a code block then looks like:
+
+~~~markdown
+ ``` {[#<reference>|.<language>|<key>=<value>] ...}
+ <code> ...
+ ```
+~~~
+
+The first class in the code properties is always interpreted to give the **programming language** of the code block. In Entangled, any code block is one of the following:
+    
+- A **referable** block: has exactly one **reference id** (`#<reference>`) and one class giving the language of the code block (`.<language>`). Example:
+
+  ~~~markdown
+  ``` {.rust #hello-rust}
+  println!("Hello, Rust!");
+  ```
+  ~~~
+ 
+  In some cases you may want to have additional classes, for example `.bootstrap-fold` to enable a folded code block. Always the first class is interpreted to identify the language.
+- A **file** block: has a key-value pair giving the path to the file (`file=<path>`), absolute or relative to the directory in which `entangled` runs. Again, there should be one class giving the language of the block (`.<language>`). Example:
+
+  ~~~markdown
+  ``` {.rust #main-function file=src/main.rs}
+  fn main() {
+     <<hello-rust>>
+  }
+  ```
+  ~~~
+
+  The identifier in a file block is optional. If it is left out, the identifier will silently be taken to be the file name.
+- An **ignored** block: anything not matching the previous two.
+
+# Tangle rules
+Entangled recognizes three parameters for every code block. Since version 1.2 the way these parameters are extracted from an opening line may be [configured using regular expressions](#custom-syntax). Formally, every code block has three properties:
+
+- `Language`
+- `Identifier`
+- `Optional Filename`
+
+Entangled should tangle your code following these rules:
+
+1. If an **identifier** is repeated the contents of the code blocks is concatenated in the order that they appear in the Markdown. If an identifier appears in multiple files, the order is dependent on the order by which the files appear in the configuration, or if they result from a glob-pattern expansion, alphabetical order.
+
+2. Each **target file** is associated to one identifier, the content of which becomes the content of the tangled file. It is illegal to tie a filename to more than one different identifiers. For example, the following input should raise an error:
+
+   ~~~markdown
+   ``` {.rust #program file=main.rs}
+   ```
+
+   ``` {.rust file=main.rs}
+   ```
+   ~~~
+
+   Because of the first statement, the file `main.rs` gets associated with the `#program` identifier; in the second statement, the file `main.rs` gets associated with the `#main.rs` identifier implicitely.
+
+3. **Noweb references** are **expanded**. A noweb reference in Entangled should occupy a single line of code by itself, and is enclosed with double angle brackets, and maybe indented with white space. Space at the end of the line is ignored.
+
+   ~~~txt
+   +--- indentation ---+--- reference  ---+--- possible space ---+
+                       <<noweb-reference>>
+   ~~~
+
+   The reference is expanded recursively, after which the indentation is prefixed to every line in the expanded reference content.
+
+4. **Annotation**; Expanded and concatenated code blocks are annotated using comment lines. These lines should not be touched when editing the generated files. The default method of annotation follows an opening comment with `~\~ begin <<filename|identifier>>[n]`, and a closing comment with `~\~ end`. For example
+
+   ~~~rust
+   // ~\~ begin <<lit/index.md|main>>[1]
+   println!("hello");
+   // ~\~ end
+   ~~~
+
+   These comments can be configured to also include line numbers (see [annotation config](#annotation-config)).
 

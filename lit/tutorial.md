@@ -34,6 +34,7 @@ This will create a directory in your current working directory with the name tha
 Inside the new directory, run
 
 ```bash
+make site   # only needed the first time
 make watch
 ```
 
