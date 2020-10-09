@@ -212,6 +212,8 @@ let syntax : entangled.Syntax =
     }
 ```
 
+Note that all expressions used to extract part of the line (e.g. `extractLanguage` and relatives) **must have exactly one subexpression**.
+
 # Standard syntax
 The standard syntax is aimed to work well together with Pandoc. Every code block is delimited with three back ticks. Added to the opening line is a sequence of space separated **code properties**. These properties align with the CSS attributes that would end up in the generated HTML. For those unfamiliar with CSS:
 

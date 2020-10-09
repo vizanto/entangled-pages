@@ -40,7 +40,6 @@ make site
 The result will appear in `./docs/index.html`. Now, make watch
 
 ```bash
-make site   # only needed the first time
 make watch
 ```
 
