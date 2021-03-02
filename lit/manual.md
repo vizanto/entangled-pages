@@ -184,7 +184,8 @@ The `annotate` option tells the method of annotation. Currently we support three
 - `entangled.Annotate.Project` --- Includes a `project://source.md#42` directive in the annotation.
   This allows some editor plugins to easily jump from the source code to the relevant location in
   the Markdown. It has a major downside however: with every change line-numbers will change, leading
-  to large commits, and frequent recompiles.
+  to large commits, and frequent recompiles. To avoid the large commit probllem, Git can be configured
+  with a `.gitattributes` filter to [strip the line numbers](https://github.com/entangled/entangled/pull/15#issuecomment-578096484) from diffs.
 
 ## Line directives
 The `lineDirectives` option gives a list of line-directive patterns. Some languages have compiler directives to point to original source locations. For example, in C, you can say `#LINE 42 "source.md"`, and the compiler will know to point the user to line 42 in `source.md`. Currently included are C, C++ and Haskell, but you can add your own style following the pattern here. You can append on this list using the `#` operator, the same way as we did with the `languages` entry.
